@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Cal+Sans&family=Pixelify+Sans:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    font-family: "Space Mono", monospace;
+    color: white;
+}
+
+body{
+    background-color: #1E1F29;
+}
+
+.mainDiv{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backgroundDiv{
+    padding: 20px;
+    background-color: #2C2F3B;
+    border-radius: 10px;
+    width: 90%;
+}
