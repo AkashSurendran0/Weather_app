@@ -21,7 +21,7 @@ function App() {
     if(map) showMap(false)
     else showMap(true)
   }
-  const handleLocationSelect = (coords) =>{
+  const handleLocationSelect = (coords: { lat: number; lng: number }) =>{
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lng}&appid=b54e4953ed085a3c2e0af7913c2d1bc5&units=metric`)
     .then(weather=>{
       const weatherData=weather.data
@@ -41,7 +41,7 @@ function App() {
     })
   }
 
-  function removeLocation(index) {
+  function removeLocation(index: number) {
     setLocation(prev => prev.filter((_, i) => i !== index));
   }
 

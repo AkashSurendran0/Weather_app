@@ -9,11 +9,39 @@ function Navbar() {
   const [suggestionPlaces, setSuggestionPlaces]=useState(null)
   const [place, setPlace]=useState(null)
   
+<<<<<<< HEAD
   const debounceTimeout = useRef(null);
 
   const clearSuggestions=()=>{
       setSuggestionPlaces([])
   }
+=======
+    const debounceTimeout = useRef(null);
+
+  const checkPlace = (e) => {
+    const value = e.target.value;
+
+    clearTimeout(debounceTimeout.current);
+
+    debounceTimeout.current = setTimeout(async () => {
+      if (value.trim() === '') return setSuggestionPlaces('');
+
+      try {
+        const result = await axios.get('https://nominatim.openstreetmap.org/search', {
+          params: {
+            q: value,
+            format: 'json',
+            limit: 5,
+          },
+        });
+
+        setSuggestionPlaces(result.data);
+      } catch (err) {
+        console.error('Error fetching location suggestions:', err);
+      }
+    }, 500);
+  };
+>>>>>>> 2812484 (Debouncing added)
 
   const checkPlace = (e) => {
     const value = e.target.value;
