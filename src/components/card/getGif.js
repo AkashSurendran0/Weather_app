@@ -1,11 +1,11 @@
 export function getGif(mood){
     switch(mood){
+        case 'Rain':
+            return 'weather_gifs/rainy.gif' 
         case 'Clouds': 
            return 'weather_gifs/cloudy.gif'
         case 'Clear':
             return 'weather_gifs/sunny.gif'
-        case 'Rain':
-            return 'weather_gifs/rainy.gif'
         case 'Thunderstorm':
             return 'weather_gifs/thunder.gif'
         case 'Snow':
@@ -17,6 +17,6 @@ export function getGif(mood){
         case 'Haze':
             return 'weather_gifs/foggy.gif'
         default:
-            return 'weather_gifs/windy.gif'
+            return null
     }
 }

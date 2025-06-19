@@ -18,9 +18,18 @@ body{
     justify-content: center;
 }
 
-.backgroundDiv{
+.backgroundDiv {
     padding: 20px;
     background-color: #2C2F3B;
     border-radius: 10px;
     width: 90%;
+    height: 90%;
+    overflow-y: scroll;
+
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+}
+
+.backgroundDiv::-webkit-scrollbar {
+    display: none;
 }

@@ -9,7 +9,7 @@ function Navbar() {
   const [suggestionPlaces, setSuggestionPlaces]=useState(null)
   const [place, setPlace]=useState(null)
   
-    const debounceTimeout = useRef(null);
+  const debounceTimeout = useRef(null);
 
   const checkPlace = (e) => {
     const value = e.target.value;

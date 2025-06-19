@@ -18,7 +18,7 @@ function LiveLocation() {
                         <p className='liveTag'>Live location Details:</p>
                     </div>
                     <div className="gif details col-md-3">
-                        <img src={gif} alt="Gif here" />
+                        <img src={gif} alt="Live Location not accessible" />
                     </div>
                     <div className="details location col-md-3">
                         <p className='livePlace'>{liveInfo.place}</p>
