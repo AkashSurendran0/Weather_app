@@ -11,6 +11,10 @@ function Navbar() {
   
   const debounceTimeout = useRef(null);
 
+  const clearSuggestions=()=>{
+      setSuggestionPlaces([])
+  }
+
   const checkPlace = (e) => {
     const value = e.target.value;
 
@@ -28,7 +32,22 @@ function Navbar() {
           },
         });
 
-        setSuggestionPlaces(result.data);
+        const places = [];
+
+        result.data.forEach(place1 => {
+          const queryPlace = place1.display_name.trim().toLowerCase().split(',')[0];
+
+          const alreadyExists = places.some(place2 => {
+            const selectedPlace = place2.display_name.trim().toLowerCase().split(',')[0];
+            return queryPlace === selectedPlace;
+          });
+
+          if (!alreadyExists) {
+            places.push(place1);
+          }
+        });
+
+        setSuggestionPlaces(places);
       } catch (err) {
         console.error('Error fetching location suggestions:', err);
       }
@@ -45,7 +64,7 @@ function Navbar() {
                 <div className="searchCity col-sm-6">
                   <input type="text" placeholder='Search for a city' onChange={checkPlace}/>
                   { suggestionPlaces &&
-                      <PlaceSuggestions places={suggestionPlaces}/>
+                      <PlaceSuggestions places={suggestionPlaces} clearSuggestions={clearSuggestions}/>
                   }
                 </div>
                 <div className="addCity col-sm-6">

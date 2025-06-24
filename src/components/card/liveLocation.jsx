@@ -7,7 +7,6 @@ import { getGif } from './getGif'
 function LiveLocation() {
     let {liveInfo}=useContext(mapContext)
     const gif=getGif(liveInfo.climate)
-    console.log(liveInfo, gif)
 
     return (
         <div className="container">

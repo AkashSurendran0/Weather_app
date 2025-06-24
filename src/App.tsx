@@ -39,37 +39,35 @@ function App() {
         ]
       })
     })
-    console.log('Details, ', selectedLocation)
   }
 
   function removeLocation(index) {
     setLocation(prev => prev.filter((_, i) => i !== index));
   }
 
-  // useEffect(()=>{
-  //   axios.get('https://ipapi.co/json')
-  //     .then(response => {
-  //       const data = response.data
-  //       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${data.latitude}&lon=${data.longitude}&appid=b54e4953ed085a3c2e0af7913c2d1bc5&units=metric`)
-  //       .then(weather=>{
-  //         const weatherData=weather.data
-  //         setInfo({
-  //           climate: weatherData.weather[0].main,
-  //           desc: weatherData.weather[0].description,
-  //           place: weatherData.name,
-  //           temp: weatherData.main.temp
-  //         })
-  //       })
-  //       console.log('IP-based location:', data.latitude, data.longitude)
-  //     })
-  //     .catch(error => {
-  //       console.error('IP Geolocation error:', error)
-  //     })
-  // }, [])
+  useEffect(()=>{
+    axios.get('https://ipapi.co/json')
+      .then(response => {
+        const data = response.data
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${data.latitude}&lon=${data.longitude}&appid=b54e4953ed085a3c2e0af7913c2d1bc5&units=metric`)
+        .then(weather=>{
+          const weatherData=weather.data
+          setInfo({
+            climate: weatherData.weather[0].main,
+            desc: weatherData.weather[0].description,
+            place: weatherData.name,
+            temp: weatherData.main.temp
+          })
+        })
+      })
+      .catch(error => {
+        console.error('IP Geolocation error:', error)
+      })
+  }, [])
 
   return (
     <>
-      <mapContext.Provider value={{map, toggleMap, liveInfo, selectedLocation, removeLocation}}>
+      <mapContext.Provider value={{map, toggleMap, liveInfo, selectedLocation, removeLocation, handleLocationSelect}}>
         { map &&
           <Map locationSelect={handleLocationSelect}/>
         }

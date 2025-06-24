@@ -6,7 +6,6 @@ import mapContext from '../../context'
 
 function SlidingSelectedLocations() {
     const {selectedLocation}=useContext(mapContext)
-    console.log('asdf', selectedLocation)
 
     return (
         <div className='selectedLocationsDiv'>
